@@ -12,7 +12,7 @@ jobs:
       - name: Install dependencies
         run: pip install flet
       - name: Build macOS App
-        run: flet build macos
+        run: flet build macos --yes
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
