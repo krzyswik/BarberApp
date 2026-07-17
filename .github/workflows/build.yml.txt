@@ -1,0 +1,20 @@
+name: Build Barber App
+on: [push]
+jobs:
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install flet
+      - name: Build macOS App
+        run: flet build macos
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: BarberApp-macOS
+          path: build/macos/build/Products/Release/
